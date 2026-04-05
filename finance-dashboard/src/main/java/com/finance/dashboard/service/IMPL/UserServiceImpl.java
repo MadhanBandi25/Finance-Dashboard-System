@@ -15,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -25,7 +24,7 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
-    //CREATE USER
+
     @Override
     public UserResponse createUser(CreateUserRequest request) {
 
@@ -44,7 +43,7 @@ public class UserServiceImpl implements UserService {
         return UserMapper.toResponse(savedUser);
     }
 
-    //GET USER BY ID
+
     @Override
     public UserResponse getUserById(Long id) {
         User user = userRepository.findById(id)
@@ -57,7 +56,7 @@ public class UserServiceImpl implements UserService {
         return UserMapper.toResponse(user);
     }
 
-    //GET ALL USERS
+
     @Override
     public List<UserResponse> getAllUsers() {
         return userRepository.findByStatus(UserStatus.ACTIVE)
@@ -66,7 +65,7 @@ public class UserServiceImpl implements UserService {
                 .collect(Collectors.toList());
     }
 
-    //UPDATE USER
+
     @Override
     public UserResponse updateUser(Long id, UpdateUserRequest request) {
         User user = userRepository.findById(id)
@@ -88,7 +87,7 @@ public class UserServiceImpl implements UserService {
         return UserMapper.toResponse(updateUser);
     }
 
-    //UPDATE USER STATUS
+
     @Override
     public UserResponse updateUserStatus(Long id, UserStatusRequest request) {
         User user = userRepository.findById(id)
@@ -103,7 +102,7 @@ public class UserServiceImpl implements UserService {
         return UserMapper.toResponse(updateUser);
     }
 
-    //FIND BY EMAIL
+
     @Override
     public  UserResponse getUserByEmail(String email){
         User user = userRepository.findByEmailIgnoreCase(email)
@@ -115,7 +114,7 @@ public class UserServiceImpl implements UserService {
         return UserMapper.toResponse(user);
     }
 
-    //DELETE USER
+
     @Override
     public void deleteUser(Long id) {
         User user = userRepository.findById(id)

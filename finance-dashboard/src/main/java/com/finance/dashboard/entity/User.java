@@ -42,7 +42,7 @@ public class User {
     private LocalDateTime createdAt;
 
 
-   // @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-   // private List<FinancialRecord> financialRecords = new ArrayList<>();
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<FinancialRecord> financialRecords = new ArrayList<>();
 
 }
